@@ -13,7 +13,6 @@ const Page = () => import('./components/layout/Page.vue');
 
 const getRoutes = (config: any) => {
   return config.map((el: any) => {
-    console.log(el.page);
     const route = {
       path: el.path,
       component: el.page ? Layout : Page,
