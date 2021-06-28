@@ -1,7 +1,7 @@
 <template>
   <div class="kmtt-page-layout">
-    <MenuBar v-if="menu" :menu="menu" :title="title" />
-    <div></div>
+    <MenuBar v-if="menu" :menu="menu" :title="title" @setTitle="setTitle" />
+    <router-view v-bind="titlesPage"></router-view>
   </div>
 </template>
 
@@ -18,6 +18,12 @@ const MenuBar = () => import('../core/Menu.vue');
 export default class Layout extends Vue {
   @Prop() title: String | undefined;
   @Prop() menu: string | undefined;
+
+  titlesPage = null;
+
+  setTitle(titles: any) {
+    this.titlesPage = titles;
+  }
 }
 </script>
 
