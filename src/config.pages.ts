@@ -23,13 +23,23 @@ export default [
             { name: 'Доступные города' },
             { name: 'Заблокированные пользователи' },
             { name: 'Черный списоск ссылок' },
-            { name: 'Управление пользователями' },
+            { name: 'Управление пользователями', url: 'users' },
           ]
         }
       ]
     },
     children: [
-      { path: '/chat',  props: { title123: '123' } }
+      {
+        path: '/users',
+        props: {
+          components: [
+            {
+              name: 'ButtonComponent',
+              props: { text: 'Добавить пользователя', action: () => console.log('click') }
+            }
+          ]
+        }
+      }
     ]
   },
 ]
