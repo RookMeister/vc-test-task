@@ -1,5 +1,5 @@
 <template>
-  <div class="kmtt-page-layout">
+  <div class="kmtt-layout">
     <MenuBar v-if="menu" :menu="menu" :title="title" @setTitle="setTitle" />
     <router-view v-bind="titlesPage"></router-view>
   </div>
@@ -28,7 +28,7 @@ export default class Layout extends Vue {
 </script>
 
 <style>
-.kmtt-page-layout {
+.kmtt-layout {
   display: flex;
   width: 100%;
   height: 100%;

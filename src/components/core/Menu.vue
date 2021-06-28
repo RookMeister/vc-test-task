@@ -8,7 +8,7 @@
           class="link"
           v-for="link in item.links" :to="link.url || '/'"
           :key="link.name"
-          @click.native="link.url && $emit('setTitle', {nameLink: link.name, title: item.title})"
+          @click.native="link.url && $emit('setTitle', { namePage: link.name, title: item.title })"
         >
           {{ link.name }}
         </router-link>
@@ -50,13 +50,13 @@ export default class Menu extends Vue {
   flex-direction: column;
   width: 350px;
   border-right: 1px solid #1d1f22;
-  font-size: 16px;
 }
 .kmtt-menu > .title {
   cursor: pointer;
   padding: 16px;
   border-bottom: 1px solid #1d1f22;
   display: inline-flex;
+  color: #ffffff;
 }
 .kmtt-menu > .title > .chevron-icon {
   margin-left: auto;
@@ -70,7 +70,6 @@ export default class Menu extends Vue {
   color: #585c62;
 }
 .kmtt-menu .link {
-  color: #909198;
   padding: 8px 16px;
   display: block;
 }
