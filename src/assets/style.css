@@ -1,11 +1,11 @@
 html {
   background-color: #17191c;
-  color: #fff;
-  
+  color: #909198;
 }
 
 body {
   font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
   width: 100%;
   min-height: 100vh;
   height: 1px;
@@ -17,4 +17,6 @@ body {
   margin: 0;
   outline: none;
   text-decoration: none;
+  color: inherit;
+  border: none;
 }
