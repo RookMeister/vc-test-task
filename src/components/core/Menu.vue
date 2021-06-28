@@ -4,14 +4,19 @@
     <div class="links" v-for="item in menu" :key="item.title">
       <div v-if="item.title" class="title">{{ item.title.toUpperCase() }}</div>
       <template v-if="item.links">
-        <a class="link" v-for="link in item.links" :href="link.url" :key="link.name">
+        <router-link
+          class="link"
+          v-for="link in item.links" :to="link.url || '/'"
+          :key="link.name"
+          @click.native="link.url && $emit('setTitle', {nameLink: link.name, title: item.title})"
+        >
           {{ link.name }}
-        </a>
+        </router-link>
       </template>
     </div>
-    <a class="link last-link" href="/">
+    <router-link class="link last-link" to="/">
       <LayersIcon class="layers-icon"/> Библиотека компонентов
-    </a>
+    </router-link>
   </div>
 </template>
 
@@ -76,7 +81,7 @@ export default class Menu extends Vue {
 .kmtt-menu .link.last-link {
   margin-top: auto;
 }
-.kmtt-menu >.layers-icon {
+.kmtt-menu .layers-icon {
   vertical-align: text-top;
   margin-right: 8px;
 }
