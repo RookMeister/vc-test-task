@@ -1,13 +1,15 @@
-export default
+export default [
   {
-    propsLayout: {
+    page: 'Main',
+    path: '/',
+    props: {
       title: 'KMTT admin',
       menu: [
         {
           title: 'Статистика',
           links: [
             { name: 'Публикации' },
-            { name: 'Мессенеджер' },
+            { name: 'Мессенеджер', url: 'chat' },
           ]
         },
         {
@@ -26,7 +28,8 @@ export default
         }
       ]
     },
-    pages: [
-      { page: 'App', path: '/', props: {} }
+    children: [
+      { path: '/chat',  props: { title123: '123' } }
     ]
-  }
+  },
+]
