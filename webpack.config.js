@@ -18,6 +18,10 @@ module.exports = {
         }
       },
       {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
+      },
+      {
         test: /\.ts$/,
         exclude: /node_modules|vue\/src/,
         loader: "ts-loader",

@@ -1,0 +1,20 @@
+html {
+  background-color: #17191c;
+  color: #fff;
+  
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  width: 100%;
+  min-height: 100vh;
+  height: 1px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  text-decoration: none;
+}
