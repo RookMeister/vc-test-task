@@ -30,9 +30,23 @@ export default [
     },
     children: [
       {
-        path: '/users',
+        path: '/',
         props: {
           components: [
+            {
+              name: 'TableComponent',
+              props: {
+                title: 'Список пользователей',
+                data: [
+                  {
+                    'ID': 56723, 'Имя':'Alex Stone', 'Email': 'alexstone.greatsoul@gmail.com', 'Статус': 'Активен', 'Действия': []
+                  },
+                  {
+                    'ID': 56723, 'Имя':'Alex Stone', 'Email': 'alexstone.greatsoul@gmail.com', 'Статус': 'Активен', 'Действия1': []
+                  }
+                ]
+              }
+            },
             {
               name: 'ButtonComponent',
               props: { text: 'Добавить пользователя', action: () => console.log('click') }
