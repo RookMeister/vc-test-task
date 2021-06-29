@@ -2,7 +2,7 @@
   <div class="kmtt-page">
     <div>{{ title }}</div>
     <h2>{{ namePage }}</h2>
-    <component v-for="item in components" :key="item.name" :is="item.name" v-bind="item.props"></component>
+    <component class="components" v-for="item in components" :key="item.name" :is="item.name" v-bind="item.props"></component>
   </div>
 </template>
 
@@ -32,10 +32,13 @@ export default class Page extends Vue {
   padding: 32px;
   width: 100%;
 }
+.kmtt-page > .components {
+  margin-top: 24px;
+}
 .kmtt-page > h2 {
   font-size: bold;
   color: #bbbcc1;
-  margin-top: 8px;
-  margin-bottom: 32px;
+  margin: 8px 0;
+  /* margin-bottom: 32px; */
 }
 </style>
