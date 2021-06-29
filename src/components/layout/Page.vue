@@ -10,10 +10,14 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
 const ButtonComponent = () => import('../core/Button.vue');
+const SearchComponent = () => import('../core/Search.vue');
+const TableComponent = () => import('../core/Table.vue');
 
 @Component({
   components: {
-    ButtonComponent
+    ButtonComponent,
+    TableComponent,
+    SearchComponent
   }
 })
 export default class Page extends Vue {
@@ -26,6 +30,7 @@ export default class Page extends Vue {
 <style>
 .kmtt-page {
   padding: 32px;
+  width: 100%;
 }
 .kmtt-page > h2 {
   font-size: bold;
