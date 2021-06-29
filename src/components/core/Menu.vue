@@ -1,6 +1,6 @@
 <template>
   <div class="kmtt-menu">
-    <div class="title">{{ title }}<ChevronDownIcon class="chevron-icon" /></div>
+    <div class="title">{{ title }}<feather class="chevron-icon" type="chevron-down"/></div>
     <div class="links" v-for="item in menu" :key="item.title">
       <div v-if="item.title" class="title">{{ item.title.toUpperCase() }}</div>
       <template v-if="item.links">
@@ -15,14 +15,14 @@
       </template>
     </div>
     <router-link class="link last-link" to="/">
-      <LayersIcon class="layers-icon"/> Библиотека компонентов
+      <feather class="layers-icon" type="layers"/>
+      Библиотека компонентов
     </router-link>
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { LayersIcon, ChevronDownIcon } from 'vue-feather-icons';
 
 interface ILinks{
   name: String;
@@ -34,9 +34,7 @@ interface IMenu {
   links: ILinks[];
 }
 
-@Component({
-  components: { LayersIcon, ChevronDownIcon }
-})
+@Component
 export default class Menu extends Vue {
   @Prop() menu: IMenu[] | undefined;
   @Prop() title: String | undefined;
@@ -81,7 +79,7 @@ export default class Menu extends Vue {
   margin-top: auto;
 }
 .kmtt-menu .layers-icon {
-  vertical-align: text-top;
+  vertical-align: middle;
   margin-right: 8px;
 }
 </style>

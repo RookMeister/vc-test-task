@@ -1,17 +1,14 @@
 <template>
   <div class="kmtt-input">
-    <SearchIcon/>
-    <input v-on="$listeners" placeholder="Поиск" :value="value">
+    <feather class="icon" size="16" type="search"/>
+    <input placeholder="Поиск" :value="value" @input="$emit('input', $event.target.value)">
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { SearchIcon } from 'vue-feather-icons';
 
-@Component({
-  components: { SearchIcon }
-})
+@Component
 export default class Search extends Vue {
   @Prop({ default: '' }) value: String | undefined;
 }
@@ -33,9 +30,7 @@ export default class Search extends Vue {
   color: #585c62;
   background-color: inherit;
 }
-.kmtt-input > svg {
-  height: 16px;
-  width: 16px;
+.kmtt-input > .icon {
   margin-right: 8px;
 }
 </style>
