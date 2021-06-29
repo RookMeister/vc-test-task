@@ -42,7 +42,32 @@ export default [
                     'ID': 56723, 'Имя':'Alex Stone', 'Email': 'alexstone.greatsoul@gmail.com', 'Статус': 'Активен', 'Действия': []
                   },
                   {
-                    'ID': 56723, 'Имя':'Alex Stone', 'Email': 'alexstone.greatsoul@gmail.com', 'Статус': 'Активен', 'Действия1': []
+                    'ID': 62346, 'Имя':'Rook', 'Email': 'rook.greatsoul@gmail.com', 'Статус': 'Активен', 'Действия1': []
+                  }
+                ]
+              }
+            },
+            {
+              name: 'ButtonComponent',
+              props: { text: 'Добавить пользователя', action: () => console.log('click') }
+            }
+          ]
+        }
+      },
+      {
+        path: '/users',
+        props: {
+          components: [
+            {
+              name: 'TableComponent',
+              props: {
+                title: 'Список пользователей',
+                data: [
+                  {
+                    'ID': 56723, 'Имя':'Alex Stone', 'Email': 'alexstone.greatsoul@gmail.com', 'Статус': 'Активен', 'Действия': []
+                  },
+                  {
+                    'ID': 62346, 'Имя':'Rook', 'Email': 'rook.greatsoul@gmail.com', 'Статус': 'Активен', 'Действия1': []
                   }
                 ]
               }
