@@ -1,10 +1,9 @@
 export default [
   {
-    page: 'Main',
     path: '/',
     props: {
       title: 'KMTT admin',
-      menu: [
+      data: [
         {
           title: 'Статистика',
           links: [
@@ -30,41 +29,24 @@ export default [
     },
     children: [
       {
-        path: '/',
-        props: {
-          components: [
-            {
-              name: 'TableComponent',
-              props: {
-                title: 'Список пользователей',
-                data: [
-                  {
-                    'ID': 56723, 'Имя':'Alex Stone', 'Email': 'alexstone.greatsoul@gmail.com', 'Статус': 'Активен', 'Действия': []
-                  },
-                  {
-                    'ID': 62346, 'Имя':'Rook', 'Email': 'rook.greatsoul@gmail.com', 'Статус': 'Активен', 'Действия1': []
-                  }
-                ]
-              }
-            },
-            {
-              name: 'ButtonComponent',
-              props: { text: 'Добавить пользователя', action: () => console.log('click') }
-            }
-          ]
-        }
-      },
-      {
         path: '/users',
         props: {
           components: [
             {
-              name: 'TableComponent',
+              name: 'Table.vue',
               props: {
                 title: 'Список пользователей',
                 data: [
                   {
-                    'ID': 56723, 'Имя':'Alex Stone', 'Email': 'alexstone.greatsoul@gmail.com', 'Статус': 'Активен', 'Действия': []
+                    'ID': 56723, 'Имя':'Alex Stone', 'Email': 'alexstone.greatsoul@gmail.com', 'Статус': 'Активен', 'Действия': {
+                      component: {
+                        // path: '../core/Button.vue',
+                        name: 'ButtonComponent',
+                        props: {
+                          text: 'Добавить пользователя'
+                        }
+                      }
+                    }
                   },
                   {
                     'ID': 62346, 'Имя':'Rook', 'Email': 'rook.greatsoul@gmail.com', 'Статус': 'Активен', 'Действия1': []
@@ -73,7 +55,7 @@ export default [
               }
             },
             {
-              name: 'ButtonComponent',
+              name: 'Button.vue',
               props: { text: 'Добавить пользователя', action: () => console.log('click') }
             }
           ]

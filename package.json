@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack -w",
-    "serve": "webpack serve"
+    "serve": "webpack serve",
+    "dev": "webpack-dev-server --hot --inline --history-api-fallback"
   },
   "repository": {
     "type": "git",

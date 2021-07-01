@@ -1,5 +1,5 @@
 <template>
-  <div class="kmtt-table">
+  <div class="kmtt-table" v-if="data">
     <div class="title">
       {{ title }} <SearchComponent v-model="searchText"/>
     </div>
@@ -7,13 +7,15 @@
       <thead>
         <tr>
           <th v-for="head in headTable" :key="head">
-            <feather v-if="getIcon(head)" class="icons" size="16" :type="getIcon(head)"/>
             <span>{{ head }}</span>
           </th>
         </tr>
       </thead>
       <tr v-for="(row, i) in filteredData" :key="'row' + i">
-        <td v-for="(col, i) in headTable" :key="'col' + i">{{ row[col] }}</td>
+        <td v-for="(col, i) in headTable" :key="'col' + i">
+          <component v-if="(typeof row[col] === 'object') && row[col].component" :is="row[col].component.name" v-bind="row[col].component.props"/>
+          <span v-else v-html="row[col]"/>
+        </td>
       </tr>
     </table>
   </div>
@@ -21,45 +23,34 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import SearchComponent from './Search.vue'
+import SearchComponent from './Search.vue';
+import { ITable } from '@/interfaces/table.interface';
+const ButtonComponent = () => import('../core/Button.vue');
 
 @Component({
   components: {
-    SearchComponent
+    SearchComponent,
+    ButtonComponent
   }
 })
 export default class Layout extends Vue {
   @Prop() title: String | undefined;
-  @Prop() data: any | undefined;
+  @Prop() data: ITable[] | undefined;
 
   searchText = '';
-  iconsField: any = {
-    'id': 'list',
-    'имя': 'user',
-    'email': 'at-sign',
-    'статус': 'alert-circle',
-    'действия': 'disc',
-    // 'действия1': 'disc',
-  }
 
   get headTable() {
-    const arr: any = [];
-    this.data.forEach((el: any) => {
+    const arr: string[] = [];
+    this.data && this.data.forEach((el: ITable) => {
       arr.push(...Object.keys(el))
     });
     return Array.from(new Set(arr)) ;
   }
 
-  
   get filteredData() {
-    return  this.data.filter((el: any) => {
-      return Object.values(el).some((v: any) => v && v.toString().toLowerCase().includes(this.searchText.toLowerCase()))
+    return this.data && this.data.filter((el: ITable) => {
+      return Object.values(el).some((v: number | string) => v && v.toString().toLowerCase().includes(this.searchText.toLowerCase()))
     })
-  }
-  
-
-  getIcon(nameFiels: string) {
-    return this.iconsField[nameFiels.toLowerCase()] || '';
   }
 }
 </script>

@@ -2,28 +2,35 @@
   <div class="kmtt-page">
     <div>{{ title }}</div>
     <h2>{{ namePage }}</h2>
-    <component class="components" v-for="item in components" :key="item.name" :is="item.name" v-bind="item.props"></component>
+    <component v-for="item in componentsPage" :key="item.name" class="components" :is="item.component" v-bind="item.props"></component>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
-
-const ButtonComponent = () => import('../core/Button.vue');
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
+import { IComponent, IComponentProps } from '@/interfaces/component.interface';
 const SearchComponent = () => import('../core/Search.vue');
-const TableComponent = () => import('../core/Table.vue');
 
 @Component({
   components: {
-    ButtonComponent,
-    TableComponent,
     SearchComponent
   }
 })
 export default class Page extends Vue {
   @Prop() title: String | undefined;
   @Prop() namePage: String | undefined;
-  @Prop() components: any | undefined;
+  @Prop() components: IComponentProps[] | undefined;
+
+  componentsPage: IComponent[] = [];
+
+  @Watch('components', {immediate: true})
+  wathedPropsComponnmets(val: IComponentProps[]) {
+    if (val) {
+      this.components && this.components.forEach((el: IComponentProps) => {
+        import('../core/'+ el.name).then(b => (this.componentsPage.push({component: b.default, props: el.props})) )
+      });
+    }
+  }
 }
 </script>
 

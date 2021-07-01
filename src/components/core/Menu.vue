@@ -1,7 +1,7 @@
 <template>
-  <div class="kmtt-menu">
+  <div class="kmtt-menu" v-if="data">
     <div class="title">{{ title }}<feather class="chevron-icon" type="chevron-down"/></div>
-    <div class="links" v-for="item in menu" :key="item.title">
+    <div class="links" v-for="item in data" :key="item.title">
       <div v-if="item.title" class="title">{{ item.title.toUpperCase() }}</div>
       <template v-if="item.links">
         <router-link
@@ -23,20 +23,11 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-
-interface ILinks{
-  name: String;
-  href: String;
-}
-
-interface IMenu {
-  title: String;
-  links: ILinks[];
-}
+import { IMenu } from '@/interfaces/menu.interface';
 
 @Component
 export default class Menu extends Vue {
-  @Prop() menu: IMenu[] | undefined;
+  @Prop() data: IMenu[] | undefined;
   @Prop() title: String | undefined;
 }
 </script>
