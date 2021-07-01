@@ -24,7 +24,7 @@ const getRoutes = (config: IConfig[] | RouteConfig[]) => {
 
 const router = new VueRouter({
   mode: 'history',
-  base: __dirname,
+  base: '/vc-test-task/',
   routes: getRoutes(routesConfig),
 })
 
