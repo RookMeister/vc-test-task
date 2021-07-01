@@ -1,5 +1,5 @@
 <template>
-  <button v-on="$listeners" @click="action" class="kmtt-button">{{ text }}</button>
+  <button v-on="$listeners" @click="action && action()" class="kmtt-button">{{ text }}</button>
 </template>
 
 <script lang="ts">
