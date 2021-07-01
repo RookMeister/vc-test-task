@@ -11,7 +11,7 @@
     ],
     "strict": true,
     "experimentalDecorators": true,
-    "outDir": "./dist/",
+    "outDir": "docs",
     "sourceMap": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
