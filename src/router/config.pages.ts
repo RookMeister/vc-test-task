@@ -3,6 +3,11 @@ export default [
     path: '/',
     props: {
       title: 'KMTT admin',
+      popover: [
+        { name: 'Основные настройки', icon: 'settings' },
+        { name: 'Настроить меню', icon: 'align-justify' },
+        { name: 'Сообщить о проблеме', icon: 'alert-triangle' },
+      ],
       data: [
         {
           title: 'Статистика',
@@ -40,8 +45,7 @@ export default [
                   {
                     'ID': 56723, 'Имя':'Alex Stone', 'Email': 'alexstone.greatsoul@gmail.com', 'Статус': 'Активен', 'Действия': {
                       component: {
-                        // path: '../core/Button.vue',
-                        name: 'ButtonComponent',
+                        name: 'Button',
                         props: {
                           text: 'Добавить пользователя'
                         }
