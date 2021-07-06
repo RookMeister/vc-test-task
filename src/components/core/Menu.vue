@@ -61,7 +61,7 @@ export default class Menu extends Vue {
   width: 350px;
   border-right: 1px solid #1d1f22;
 }
-.kmtt-menu .title {
+.kmtt-menu > .title {
   cursor: pointer;
   padding: 16px;
   border-bottom: 1px solid #1d1f22;
