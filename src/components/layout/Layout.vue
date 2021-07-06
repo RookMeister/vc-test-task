@@ -18,6 +18,7 @@ const MenuBar = () => import('../core/Menu.vue');
 export default class Layout extends Vue {
   @Prop() title: String | undefined;
   @Prop() data: string | undefined;
+  @Prop() popover: string | undefined;
 
   titlesPage: { namePage: string, title: string } | null = null;
 

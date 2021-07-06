@@ -13,7 +13,7 @@
       </thead>
       <tr v-for="(row, i) in filteredData" :key="'row' + i">
         <td v-for="(col, i) in headTable" :key="'col' + i">
-          <component v-if="(typeof row[col] === 'object') && row[col].component" :is="row[col].component.name" v-bind="row[col].component.props"/>
+          <DynamicComponent v-if="(typeof row[col] === 'object') && row[col].component" :component="row[col].component"/>
           <span v-else v-html="row[col]"/>
         </td>
       </tr>
@@ -23,14 +23,15 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
+import DynamicComponent from './DynamicComponent.vue';
 import SearchComponent from './Search.vue';
 import { ITable } from '@/interfaces/table.interface';
-const ButtonComponent = () => import('../core/Button.vue');
+
 
 @Component({
   components: {
-    SearchComponent,
-    ButtonComponent
+    DynamicComponent,
+    SearchComponent
   }
 })
 export default class Layout extends Vue {
