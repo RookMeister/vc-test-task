@@ -1,6 +1,21 @@
 <template>
   <div class="kmtt-menu" v-if="data">
-    <div class="title">{{ title }}<feather class="chevron-icon" type="chevron-down"/></div>
+    <Popover>
+      <div class="title">{{ title }}<feather class="chevron-icon" type="chevron-down"/></div>
+      <template #content>
+          <template v-if="popover">
+            <router-link
+              class="link"
+              v-for="link in popover" :to="link.url || '/'"
+              :key="link.name"
+              @click.native="link.url && $emit('setTitle', { namePage: link.name, title: item.title })"
+            >
+              <feather v-if="link.icon" :type="link.icon" style="margin-right: 8px;"/>
+              <div>{{ link.name }}</div>
+            </router-link>
+          </template>
+      </template>
+    </Popover>
     <div class="links" v-for="item in data" :key="item.title">
       <div v-if="item.title" class="title">{{ item.title.toUpperCase() }}</div>
       <template v-if="item.links">
@@ -24,10 +39,16 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { IMenu } from '@/interfaces/menu.interface';
+const Popover = () => import('../core/Popover.vue');
 
-@Component
+@Component({
+  components: {
+    Popover
+  }
+})
 export default class Menu extends Vue {
   @Prop() data: IMenu[] | undefined;
+  @Prop() popover: IMenu[] | undefined;
   @Prop() title: String | undefined;
 }
 </script>
@@ -40,14 +61,14 @@ export default class Menu extends Vue {
   width: 350px;
   border-right: 1px solid #1d1f22;
 }
-.kmtt-menu > .title {
+.kmtt-menu .title {
   cursor: pointer;
   padding: 16px;
   border-bottom: 1px solid #1d1f22;
-  display: inline-flex;
+  display: flex;
   color: #ffffff;
 }
-.kmtt-menu > .title > .chevron-icon {
+.kmtt-menu .title > .chevron-icon {
   margin-left: auto;
   color: #585c62;
 }
@@ -61,6 +82,8 @@ export default class Menu extends Vue {
 .kmtt-menu .link {
   padding: 8px 16px;
   display: block;
+  display: flex;
+  align-items: center;
 }
 .kmtt-menu .link:hover {
   background-color: #23252a;
