@@ -1,6 +1,6 @@
 # vc-test-task
 
-https://github.com/RookMeister/vc-test-task/settings/pages
+https://rookmeister.github.io/vc-test-task/
 ## Тестовое задание 
 
 ### Задача
